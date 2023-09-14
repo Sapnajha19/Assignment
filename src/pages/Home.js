@@ -17,10 +17,8 @@ import Insta from '../assets/color-insta.svg'
 import Yt from '../assets/color-yt.svg'
 import Mail from '../assets/Mail.svg'
 
-export default function Home({ close }) {
+export default function Home() {
   const [isAddProfileFormOpen, setIsAddProfileFormOpen] = useState(false)
-  // const [isAddBlurStylesTrue, setIsAddBlurStylesTrue] = useState(false)
-  // const [isFormClosed, setIsFormClosed] = useState(false)
   const [isProfileFormSubmitted, setIsProfileFormubmitted] = useState(false)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,8 +33,9 @@ export default function Home({ close }) {
     setIsAddProfileFormOpen(false)
   }
   const handleSubmit = () => {
-    if(name && email && phone){
-    setIsProfileFormubmitted(true)}
+    if (name && email && phone) {
+      setIsProfileFormubmitted(true)
+    }
     setIsAddProfileFormOpen(false)
   }
   return (
@@ -154,13 +153,13 @@ export default function Home({ close }) {
               <div className='flex flex-row gap-[100px]'>
                 <div className='flex flex-row gap-[17px]'>
                   <div className='h-[28px] w-[28px] bg-[#E9F9EB] rounded-full flex flex-crow items-center'>
-                    <img src={Whatsapp} alt="whatsapp" className='w-[17px] h-[17px] mx-auto text-white'/>
+                    <img src={Whatsapp} alt="whatsapp" className='w-[17px] h-[17px] mx-auto text-white' />
                   </div>
                   <p className='text-[#231F20] font-normal text-[14px] underline font-Figtree'>{phone}</p>
                 </div>
                 <div className='flex flex-row gap-[17px]'>
                   {instagram && <div className='h-[28px] w-[28px] bg-[#FFE9EC] rounded-full flex flex-row items-center'>
-                    <img src={Insta} alt="insta" className='w-[17px] h-[17px] mx-auto'/>
+                    <img src={Insta} alt="insta" className='w-[17px] h-[17px] mx-auto' />
                   </div>}
                   <p className='text-[#231F20] font-normal text-[14px] underline font-Figtree'>{instagram}</p>
                 </div>
@@ -168,13 +167,13 @@ export default function Home({ close }) {
               <div className='flex flex-row gap-[100px]'>
                 <div className='flex flex-row gap-[17px]'>
                   <div className='h-[28px] w-[28px] bg-[#A9B0E5] rounded-full flex flex-row items-center'>
-                    <img src={Mail} alt="mail" className='w-[17px] h-[17px] mx-auto'/>
+                    <img src={Mail} alt="mail" className='w-[17px] h-[17px] mx-auto' />
                   </div>
                   <p className='text-[#231F20] font-normal text-[14px] underline font-Figtree'>{email}</p>
                 </div>
                 <div className='flex flex-row gap-[17px]'>
                   {youtube && <div className='h-[28px] w-[28px] bg-[#FFE9EC] rounded-full flex flex-row items-center'>
-                    <img src={Yt} alt="yt" className='w-[17px] h-[17px] mx-auto'/>
+                    <img src={Yt} alt="yt" className='w-[17px] h-[17px] mx-auto' />
                   </div>}
                   <p className='text-[#231F20] font-normal text-[14px] underline font-Figtree'>{youtube}</p>
                 </div>
@@ -193,7 +192,7 @@ export default function Home({ close }) {
             zIndex: "10000", /* Ensure the modal is on top of the overlay */
             backgroundColor: "#fff"
           }} className="modal">
-            <AddProfileForm isFormOpen={isAddProfileFormOpen} close={handleClose} isFormSubmitted={isProfileFormSubmitted} submit={handleSubmit} finalName={setName} finalEmail={setEmail} finalPhone={setPhone} finalYt={setYoutube} finalInsta={setInstagram} />
+            <AddProfileForm close={handleClose} submit={handleSubmit} finalName={setName} finalEmail={setEmail} finalPhone={setPhone} finalYt={setYoutube} finalInsta={setInstagram} />
           </div>
         )}
       </div>

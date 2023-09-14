@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import Home from '../pages/Home';
 import Cross from "../assets/Icon.svg";
 
 export default function AddProfileForm({ close, submit, finalName, finalEmail, finalPhone, finalInsta, finalYt }) {
   const [isNextButtonClicked, setIsNextButtonClicked] = useState(false);
   const [isBackButtonClicked, setIsBackButtonClicked] = useState(false);
-  const [isFormClosed, setIsFormClosed] = useState(false);
-  const [isProfileFormSubmitted, setIsProfileFormubmitted] = useState(false)
   const [isNameNotFilled, setIsNameNotFilled] = useState(false)
   const [isEmailNotFilled, setIsEmailNotFilled] = useState(false)
   const [isPhoneNotFilled, setIsPhoneNotFilled] = useState(false)
@@ -57,15 +54,7 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
   const handleBackButton = () => {
     setIsBackButtonClicked(!isBackButtonClicked)
   }
-  const handleCloseForm = () => {
-    if (isProfileFormSubmitted) {
 
-    }
-    setIsNextButtonClicked(false)
-  }
-  if (isFormClosed) {
-    return (<Home close={handleCloseForm} />)
-  }
   return (
     <div style={{
       position: "fixed",
@@ -75,7 +64,6 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
       height: "100%",
       backgroundColor: "rgba(0, 0, 0, 0.50)",
       zIndex: "9999",
-      // pointerEvents: "none",
       transition: "opacity 0.3s ease-in-out"
     }} className=' w-[544px] h-[553px] bg-[#ffffff] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.20),_0px_0px_32px_-8px_rgba(0,0,0,0.12),_0px_32px_32px_-8px_rgba(0,0,0,0.08)]'>
       {isNextButtonClicked && !isBackButtonClicked ?
@@ -105,7 +93,7 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
                 <div className="h-20 flex-col justify-start items-start gap-2 flex">
                   <div className="self-stretch"><span className="text-[#231F20] text-[16px] font-normal font-Figtree leading-normal">Instagram Link </span><span className="text-[#999CA0] text-[16px] font-normal font-Figtree leading-normal">(Optional)  </span></div>
                   <div className="self-stretch h-12 px-4 py-3 bg-white rounded-lg border border-zinc-100 flex-col justify-start items-start flex">
-                    <input placeholder='Eg. ..instagram.com/username' value={instagram} onChange={handleInstagramChange} className="placeholder-[#999CA0] self-stretch text-[#999CA0] text-[16px] outline-none font-normal font-Figtree leading-normal" />
+                    <input placeholder='Eg. ..instagram.com/username' value={instagram} onChange={handleInstagramChange} className="w-[466px] placeholder-[#999CA0] self-stretch text-[#999CA0] text-[16px] outline-none font-normal font-Figtree leading-normal" />
                   </div>
                 </div>
               </div>
@@ -181,7 +169,6 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
                 </div>
               </div>
             </div>
-            
           </div>
           <div className="h-[88px] pb-6 left-[4px] top-[465px] absolute flex-col justify-start items-start gap-6 inline-flex">
             <div className="self-stretch w-[540px] h-[0.5px] bg-[#F2F2F2]"></div>
@@ -190,15 +177,11 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
                 <div className="text-center"></div>
               </div>
               <div className="justify-start items-start gap-2 flex">
-
                 <button className="px-4 py-2 bg-[#3E84F8] rounded-lg justify-center items-center flex text-center text-white text-[14px] font-semibold font-Figtree leading-normal" onClick={handleNextClick}>Next</button>
-
               </div>
             </div>
           </div>
         </div>)}
-
-
     </div>
   )
 }
