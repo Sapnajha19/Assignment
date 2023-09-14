@@ -16,7 +16,7 @@ export default function SignUp() {
         setEmail(event.target.value)
     }
     const handlePasswordChange=(event)=>{
-        setEmail(event.target.value)
+        setPassword(event.target.value)
     }
     const navigate = useNavigate()
     const handleSuccess = (credentialResponse) => {
@@ -71,11 +71,11 @@ export default function SignUp() {
                         <div className='flex flex-col gap-[20px] mt-[32px] ml-[32px]'>
                             <div className='flex flex-col gap-[10px]'>
                                 <label className='text-[#000000] text-[16px] font-Lato font-normal'>Email address</label>
-                                <input value="johndoe@gmail.com" onChange={handleEmailChange} className='w-[356.77px] outline-none placeholder-[#000000] bg-[#F5F5F5] p-[10px] rounded-[10px] text-[16px] font-Lato font-normal' />
+                                <input placeholder="johndoe@gmail.com" value={email} onChange={handleEmailChange} className='w-[356.77px] outline-none placeholder-[#000000] bg-[#F5F5F5] p-[10px] rounded-[10px] text-[16px] font-Lato font-normal' />
                             </div>
                             <div className='flex flex-col gap-[10px]'>
                                 <label className='text-[#000000] text-[16px] font-Lato font-normal'>Password</label>
-                                <input type="password" onChange={handlePasswordChange} className='w-[356.77px] outline-none placeholder-[#000000] bg-[#EAEAEA] p-[10px] rounded-[10px] text-[16px] font-Lato font-normal' />
+                                <input type="password" value={password} onChange={handlePasswordChange} className='w-[356.77px] outline-none placeholder-[#000000] bg-[#EAEAEA] p-[10px] rounded-[10px] text-[16px] font-Lato font-normal' />
                             </div>
                             <p className='text-[#346BD4] text-[16px] font-Lato font-normal'>Forgot password?</p>
                             <button className='bg-[#4285F4] w-[356.77px] text-[#ffffff] p-[10px] rounded-[10px] font-Montserrat font-bold text-[16px]'>Sign In</button>
