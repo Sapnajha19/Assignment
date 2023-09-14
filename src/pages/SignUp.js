@@ -6,7 +6,7 @@ import { AiFillLinkedin } from 'react-icons/ai'
 import { BiLogoDiscord } from 'react-icons/bi'
 export default function SignUp() {
     return (
-        <div className='w-full flex flex-row bg-[#F8FAFF]'>
+        <div className='w-full h-full flex flex-row bg-[#F8FAFF]'>
             <div className='relative flex'>
                 <p className='absolute top-0 left-0 text-[#ffffff] font-Poppins text-[24px] font-bold mt-[60px] ml-[60px]'>LOGO</p>
                 <img src={LeftImg} alt='Left' />
