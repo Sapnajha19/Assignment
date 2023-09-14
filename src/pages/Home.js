@@ -16,6 +16,8 @@ import Whatsapp from '../assets/whatsapp.png'
 import Insta from '../assets/color-insta.svg'
 import Yt from '../assets/color-yt.svg'
 import Mail from '../assets/Mail.svg'
+import DonutChart from '../components/DonutChart'
+import ColumnChart from '../components/ColumnChart'
 
 export default function Home() {
   const [isAddProfileFormOpen, setIsAddProfileFormOpen] = useState(false)
@@ -39,7 +41,7 @@ export default function Home() {
     setIsAddProfileFormOpen(false)
   }
   return (
-    <div className='w-full h-full flex flex-row gap-[67px] '>
+    <div className='w-full h-full bg-[#F8FAFF] flex flex-row gap-[67px] '>
       <div className='w-[280px] h-[944px] bg-gradient-to-b from-blue-500 to-blue-500 rounded-[20px] mt-[40px] ml-[43px] flex flex-col'>
         <p className='font-Montserrat text-[#ffffff] text-[36px] font-bold ml-[50px] mt-[60px]'>Board.</p>
         <div className='flex flex-col gap-[40px] mt-[60px] ml-[50px]'>
@@ -141,11 +143,25 @@ export default function Home() {
           </div>
         </div>
         <div className="w-[1000px] h-[359px] justify-center items-center inline-flex mt-[40px]">
-          <div className="w-[1000px] h-[359px] bg-white rounded-[20px] shadow border-2 border-neutral-200" />
+          <div className="w-[1000px] h-[359px] bg-white rounded-[20px] shadow border-2 border-neutral-200">
+            <div className='flex flex-col mt-[30px] ml-[40px]'>
+            <p className='font-Montserrat text-black text-[18px] font-bold'>Activities</p>
+            <p className='font-Montserrat text-[#858585] text-[14px] font-normal'>May - June 2021</p>
+            <ColumnChart/>
+            </div>
+          </div>
         </div>
         <div className='flex flex-row gap-[40px] mt-[40px]'>
           <div className="w-[480px] h-64 justify-center items-center inline-flex">
-            <div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200" />
+            <div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200">
+              <div className='flex flex-row justify-between'>
+                <p className='font-Montserrat text-black text-[18px] font-bold mt-[10px] ml-[40px]'>Top products</p>
+                <p className='mt-[10px] text-[#858585] font-Montserrat text-[12px] font-normal mr-[56px]'>May - June 2021</p>
+              </div>
+              <div className='flex flex-row'>
+                <DonutChart />
+              </div>
+            </div>
           </div>
           {isProfileFormSubmitted ? (<div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200 flex flex-col">
             <p className='text-[24px] text-[#000000] font-Figtree font-semibold mt-[48px] ml-[41px]'>{name}</p>
