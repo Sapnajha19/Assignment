@@ -42,9 +42,22 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
     else if (name && !email && phone) {
       setIsEmailNotFilled(true);
     }
-    else if (!name && email && !phone) {
+    else if (name && email && !phone) {
       setIsPhoneNotFilled(true);
     }
+    else if (name && !email && !phone) {
+      setIsEmailNotFilled(true)
+      setIsPhoneNotFilled(true);
+    }
+    else if (!name && email && !phone) {
+      setIsNameNotFilled(true)
+      setIsPhoneNotFilled(true);
+    }
+    else if (!name && !email && phone) {
+      setIsNameNotFilled(true)
+      setIsEmailNotFilled(true);
+    }
+    
     else {
       setIsNameNotFilled(true);
       setIsEmailNotFilled(true);
@@ -65,7 +78,7 @@ export default function AddProfileForm({ close, submit, finalName, finalEmail, f
       backgroundColor: "rgba(0, 0, 0, 0.50)",
       zIndex: "9999",
       transition: "opacity 0.3s ease-in-out"
-    }} className=' w-[544px] h-[553px] bg-[#ffffff] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.20),_0px_0px_32px_-8px_rgba(0,0,0,0.12),_0px_32px_32px_-8px_rgba(0,0,0,0.08)]'>
+    }} className='w-[544px] h-[553px] bg-[#ffffff] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.20),_0px_0px_32px_-8px_rgba(0,0,0,0.12),_0px_32px_32px_-8px_rgba(0,0,0,0.08)]'>
       {isNextButtonClicked && !isBackButtonClicked ?
         (
           <div className="w-[544px] h-[463px] absolute top-[235.5px] left-[448px] bg-white rounded-2xl shadow flex-col justify-start items-start inline-flex">

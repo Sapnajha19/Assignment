@@ -27,6 +27,11 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [instagram, setInstagram] = useState("");
   const [youtube, setYoutube] = useState("");
+  const [isDashboardMenuOpen, setIsDashboardMenuOpen] = useState(true);
+
+  const toggleDashboardMenu = () => {
+    setIsDashboardMenuOpen(!isDashboardMenuOpen);
+  };
   const handleAddClick = () => {
     setIsAddProfileFormOpen(true)
 
@@ -40,9 +45,59 @@ export default function Home() {
     }
     setIsAddProfileFormOpen(false)
   }
+  
   return (
-    <div className='w-full h-full bg-[#F8FAFF] flex flex-row gap-[67px] '>
-      <div className='w-[280px] h-[944px] bg-gradient-to-b from-blue-500 to-blue-500 rounded-[20px] mt-[40px] ml-[43px] flex flex-col'>
+    <div className='w-full h-full bg-[#F8FAFF] flex flex-row gap-[10px] lg:gap-[67px] z-0'>
+      {isDashboardMenuOpen ? (
+        <div className='absolute top-3 right-1 ml-auto'>
+          <button
+            className='lg:hidden bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'
+            onClick={toggleDashboardMenu}
+          >
+            Close
+          </button>
+        </div>
+      ) : (<div className='absolute top-3 right-3'>
+        <button
+          className='lg:hidden bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'
+          onClick={toggleDashboardMenu}
+        >
+          Open
+        </button>
+      </div>)}
+      <div className=''>
+        <div className='hidden lg:block w-[280px] h-[944px] pt-5 bg-gradient-to-b from-blue-500 to-blue-500 rounded-[20px] mt-[40px] ml-[43px] flex flex-col'>
+          <p className='font-Montserrat text-[#ffffff] text-[36px] font-bold ml-[50px] mt-[60px]'>Board.</p>
+          <div className='flex flex-col gap-[40px] mt-[60px] ml-[50px]'>
+            <div className='flex flex-row gap-[20px] items-center'>
+              <FiPieChart className='text-[#ffffff] w-[18px] h-[18px]' />
+              <p className='font-Montserrat text-[#ffffff] text-[18px] font-bold'>Dashboard</p>
+            </div>
+            <div className='flex flex-row gap-[20px] items-center'>
+              <img src={Transaction} alt="transaction" className='text-[#ffffff] w-[18px] h-[18px]' />
+              <p className='font-Montserrat text-[#ffffff] text-[18px] font-normal'>Transactions</p>
+            </div>
+            <div className='flex flex-row gap-[20px] items-center'>
+              <LuCalendarClock className='text-[#ffffff] w-[18px] h-[18px]' />
+              <p className='font-Montserrat text-[#ffffff] text-[18px] font-normal'>Schedules</p>
+            </div>
+            <div className='flex flex-row gap-[20px] items-center'>
+              <BiUserCircle className='text-[#ffffff] w-[18px] h-[18px]' />
+              <p className='font-Montserrat text-[#ffffff] text-[18px] font-normal'>Users</p>
+            </div>
+            <div className='flex flex-row gap-[20px] items-center'>
+              <FiSettings className='text-[#ffffff] w-[18px] h-[18px]' />
+              <p className='font-Montserrat text-[#ffffff] text-[18px] font-normal'>Settings</p>
+            </div>
+          </div>
+          <div className='flex flex-col gap-[20px] mt-[396px] ml-[50px]'>
+            <p className='text-[#ffffff] font-Montserrat text-[14px] font-normal'>Help</p>
+            <p className='text-[#ffffff] font-Montserrat text-[14px] font-normal'>Contact Us</p>
+          </div>
+        </div>
+      </div>
+      {/* ... Rest of your code */}
+      {isDashboardMenuOpen && <div style={isDashboardMenuOpen ? { position: "relative" } : { position: "absolute" }} className='lg:hidden sm:w-[280px] h-[944px] absolute top-0 left-[-60px] bg-gradient-to-b from-blue-500 to-blue-500 rounded-[20px] flex flex-col z-1'>
         <p className='font-Montserrat text-[#ffffff] text-[36px] font-bold ml-[50px] mt-[60px]'>Board.</p>
         <div className='flex flex-col gap-[40px] mt-[60px] ml-[50px]'>
           <div className='flex flex-row gap-[20px] items-center'>
@@ -70,9 +125,9 @@ export default function Home() {
           <p className='text-[#ffffff] font-Montserrat text-[14px] font-normal'>Help</p>
           <p className='text-[#ffffff] font-Montserrat text-[14px] font-normal'>Contact Us</p>
         </div>
-      </div>
-      <div className='flex flex-col mt-[71px]'>
-        <div className='flex flex-row gap-[612px]'>
+      </div>}
+      <div className='flex flex-col mt-[71px] '>
+        <div className='flex flex-col gap-[10px] lg:flex-row lg:gap-[612px]'>
           <p className='text-[#000000] font-Montserrat font-bold text-[24px]'>Dashboard</p>
           <div className='flex flex-row items-center mr-[40px]'>
             <div className="w-[197.60px] h-[32.93px] relative">
@@ -83,7 +138,7 @@ export default function Home() {
             <img src={ProfileImg} alt="profile" className='rounded-full ml-[27.6px]' />
           </div>
         </div>
-        <div className='flex flex-row gap-[17px] mt-[40px]'>
+        <div className='flex flex-col lg:flex-row gap-[17px] mt-[40px]'>
           <div className="w-[237.32px] h-[120px] relative">
             <div className="w-[237.32px] h-[120px] left-0 top-0 absolute bg-white rounded-[20px] border-2 border-neutral-200">
               <div className='flex flex-col ml-[26px] mt-[18px]'>
@@ -142,28 +197,28 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-[1000px] h-[359px] justify-center items-center inline-flex mt-[40px]">
+        <div className="w-[300px] lg:w-[1000px] h-[359px] justify-center items-center inline-flex mt-[40px]">
           <div className="w-[1000px] h-[359px] bg-white rounded-[20px] shadow border-2 border-neutral-200">
             <div className='flex flex-col mt-[30px] ml-[40px]'>
-            <p className='font-Montserrat text-black text-[18px] font-bold'>Activities</p>
-            <p className='font-Montserrat text-[#858585] text-[14px] font-normal'>May - June 2021</p>
-            <ColumnChart/>
+              <p className='font-Montserrat text-black text-[18px] font-bold'>Activities</p>
+              <p className='font-Montserrat text-[#858585] text-[14px] font-normal'>May - June 2021</p>
+              <ColumnChart />
             </div>
           </div>
         </div>
-        <div className='flex flex-row gap-[40px] mt-[40px]'>
-          <div className="w-[480px] h-64 justify-center items-center inline-flex">
-            <div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200">
+        <div className='flex flex-col lg:flex-row gap-[40px] mt-[40px]'>
+          <div className="w-[300px] lg:w-[480px] h-64 justify-center items-center inline-flex">
+            <div className="w-[300px] lg:w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200">
               <div className='flex flex-row justify-between'>
                 <p className='font-Montserrat text-black text-[18px] font-bold mt-[10px] ml-[40px]'>Top products</p>
                 <p className='mt-[10px] text-[#858585] font-Montserrat text-[12px] font-normal mr-[56px]'>May - June 2021</p>
               </div>
               <div className='flex flex-row'>
-                <DonutChart />
+                <DonutChart/>
               </div>
             </div>
           </div>
-          {isProfileFormSubmitted ? (<div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200 flex flex-col">
+          {isProfileFormSubmitted ? (<div className="w-[300px] lg:w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200 flex flex-col">
             <p className='text-[24px] text-[#000000] font-Figtree font-semibold mt-[48px] ml-[41px]'>{name}</p>
             <div className='flex flex-col gap-[26px] mt-[60px] ml-[41px]'>
               <div className='flex flex-row gap-[100px]'>
@@ -196,7 +251,7 @@ export default function Home() {
               </div>
             </div>
 
-          </div>) : (<div className="w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200 flex items-center">
+          </div>) : (<div className="w-[300px] lg:w-[480px] h-64 bg-white rounded-[20px] shadow border-2 border-neutral-200 flex items-center">
             <div className='w-[76.784px] h-[76.784px] bg-[#F5F5F5] rounded-full mx-auto flex items-center'>
               <AiOutlinePlus className='w-[51.189px] h-[51.189px] text-[#999CA0] mx-auto' onClick={handleAddClick} />
             </div>

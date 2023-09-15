@@ -27,7 +27,7 @@ function DonutChart() {
         }
       },
       responsive: [{
-        breakpoint: 480,
+        breakpoint: 400,
         options: {
           chart: {
             width: 200
