@@ -4,22 +4,27 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import MobileSignUp from './pages/MobileSignUp';
 import { useState, useEffect } from 'react';
+import MobileHome from './pages/MobileHome';
 function App() {
   // const isMobile = window.innerWidth <= 900;
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 920);
-
+  const [isSignUpMobile, setIsSignUpMobile] = useState(window.innerWidth <= 920);
+  const [isHomeMobile, setIsHomeMobile] = useState(window.innerWidth <= 1280);
   useEffect(() => {
     // Function to update isMobile state based on window width
-    function handleResize() {
-      setIsMobile(window.innerWidth <= 900);
+    function handleSignUpResize() {
+      setIsSignUpMobile(window.innerWidth <= 920);
+    }
+    function handleHomeResize() {
+      setIsHomeMobile(window.innerWidth <= 1280);
     }
 
     // Attach the event listener
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener('resize', handleSignUpResize);
+    window.addEventListener('resize', handleHomeResize);
     // Remove the event listener when the component unmounts
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleSignUpResize);
+      window.removeEventListener('resize', handleHomeResize);
     };
   }, []);
 
@@ -28,8 +33,9 @@ function App() {
     <div className="App">
       <Router> {/* Wrap your entire app in Router */}
         <Routes>
-          {isMobile ? <Route path="/" element={<MobileSignUp />} /> : <Route path="/" element={<SignUp />} />}
-          <Route path="/dashboard" element={<Home />} />
+          {isSignUpMobile ? <Route path="/" element={<MobileSignUp />} /> : <Route path="/" element={<SignUp />} />}
+          {isHomeMobile ? <Route path="/dashboard" element={<MobileHome />} /> : <Route path="/dashboard" element={<Home />} />}
+          {/* <Route path="/dashboard" element={<Home />} /> */}
         </Routes>
       </Router>
     </div>
